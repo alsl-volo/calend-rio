@@ -3,72 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calendário Interativo 2026</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<title>Calendário 2026</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI", sans-serif;
+}
 
 body{
   width:100vw;
   height:100vh;
   overflow:hidden;
   background:
-    radial-gradient(circle at 40% 35%, rgba(120,0,0,.35), transparent 38%),
+    radial-gradient(circle at 45% 35%, rgba(120,0,0,.35), transparent 38%),
     linear-gradient(90deg,#050505,#090000 45%,#050505);
   color:white;
-  font-family:"Segoe UI",sans-serif;
 }
 
 .container{
   width:100%;
   height:100%;
   display:grid;
-  grid-template-columns:390px 390px 1fr;
-  gap:25px;
+  grid-template-columns:330px 360px 1fr;
+  gap:24px;
   padding:24px;
 }
 
-/* ESQUERDA */
+/* PAINEL ESQUERDO */
 .sidebar{
-  border:1px solid rgba(212,167,74,.45);
-  border-radius:32px;
+  border:1px solid rgba(228,178,83,.5);
+  border-radius:28px;
   background:rgba(0,0,0,.62);
-  padding:30px;
+  padding:28px;
   display:flex;
   flex-direction:column;
   align-items:center;
 }
 
-.logo h1{
-  font-family:'Playfair Display',serif;
-  font-size:3rem;
-  color:#f3d07a;
+.logo{
+  font-family:Georgia,serif;
+  font-style:italic;
+  font-size:42px;
+  color:#f4d58a;
 }
 
-.logo p{
-  text-align:center;
-  letter-spacing:5px;
-  font-size:.9rem;
+.live{
+  letter-spacing:4px;
   color:#f6e6b2;
-  margin-top:5px;
+  font-size:12px;
+  margin:8px 0 28px;
 }
 
 .clock{
-  width:210px;
-  height:210px;
-  border:2px solid rgba(212,167,74,.5);
+  width:190px;
+  height:190px;
   border-radius:50%;
+  border:2px solid rgba(228,178,83,.55);
   position:relative;
-  margin:35px 0 20px;
+  margin-bottom:24px;
 }
 
-.center-dot{
-  width:12px;
-  height:12px;
-  background:#f3d07a;
+.clock::after{
+  content:"";
+  width:10px;
+  height:10px;
   border-radius:50%;
+  background:#f4d58a;
   position:absolute;
   top:50%;
   left:50%;
@@ -77,44 +80,59 @@ body{
 
 .hand{
   position:absolute;
-  bottom:50%;
   left:50%;
+  bottom:50%;
   transform-origin:bottom;
   transform:translateX(-50%) rotate(0deg);
   border-radius:10px;
 }
 
-.hour{width:5px;height:55px;background:#ffe39b;}
-.minute{width:3px;height:78px;background:#ffd25e;}
-.second{width:2px;height:90px;background:#b56b00;}
+.hour{
+  width:5px;
+  height:50px;
+  background:#ffe39b;
+}
+
+.minute{
+  width:3px;
+  height:72px;
+  background:#ffd25e;
+}
+
+.second{
+  width:2px;
+  height:82px;
+  background:#c9822d;
+}
 
 .digital{
-  font-size:2.3rem;
-  font-family:'Cinzel',serif;
-  color:#f2c86f;
+  color:#f1c979;
+  font-size:34px;
+  margin-bottom:8px;
 }
 
 .date{
-  margin-top:8px;
-  font-size:1rem;
+  font-size:14px;
   color:#eee;
+  text-align:center;
+  margin-bottom:34px;
 }
 
 .menu{
   width:100%;
-  margin-top:35px;
   display:flex;
   flex-direction:column;
-  gap:15px;
+  gap:16px;
 }
 
 .menu button{
-  background:rgba(20,0,0,.55);
-  border:1px solid rgba(255,200,90,.18);
+  padding:16px;
+  border-radius:18px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.08);
   color:white;
-  padding:18px;
-  border-radius:20px;
-  font-size:1.2rem;
+  font-size:18px;
+  text-align:left;
   cursor:pointer;
 }
 
@@ -133,12 +151,11 @@ body{
 
 .photo-card{
   width:100%;
-  max-width:370px;
-  border:1px solid rgba(212,167,74,.42);
-  border-radius:28px;
+  border:1px solid rgba(228,178,83,.45);
+  border-radius:24px;
   overflow:hidden;
   background:rgba(0,0,0,.55);
-  box-shadow:0 0 35px rgba(0,0,0,.55);
+  box-shadow:0 0 35px rgba(0,0,0,.65);
 }
 
 .photo-card img{
@@ -157,24 +174,25 @@ body{
   text-align:center;
 }
 
-.top h2{
-  font-size:6rem;
-  font-family:'Playfair Display',serif;
+.top h1{
+  font-family:Georgia,serif;
+  font-size:82px;
   color:#f2c86f;
-  line-height:1;
+  line-height:.9;
 }
 
 .top p{
-  letter-spacing:7px;
-  font-size:1rem;
   color:#f6d985;
+  letter-spacing:6px;
+  font-size:14px;
+  margin-top:8px;
 }
 
 .calendar-box{
   flex:1;
+  border:1px solid rgba(228,178,83,.45);
+  border-radius:28px;
   background:rgba(0,0,0,.62);
-  border:1px solid rgba(212,167,74,.45);
-  border-radius:32px;
   padding:28px;
 }
 
@@ -186,20 +204,20 @@ body{
 }
 
 .calendar-header button{
-  width:50px;
-  height:50px;
+  width:48px;
+  height:48px;
   border-radius:50%;
-  border:1px solid rgba(212,167,74,.5);
-  background:rgba(0,0,0,.55);
+  border:1px solid rgba(228,178,83,.55);
+  background:rgba(0,0,0,.4);
   color:#f2c86f;
-  font-size:2rem;
+  font-size:30px;
   cursor:pointer;
 }
 
-.calendar-header h3{
-  font-size:2.8rem;
-  font-family:'Cinzel',serif;
+.calendar-header h2{
   color:#f6d985;
+  font-size:36px;
+  letter-spacing:5px;
 }
 
 .weekdays,
@@ -212,7 +230,8 @@ body{
 .weekdays div{
   text-align:center;
   color:#f2d07a;
-  font-size:1rem;
+  font-size:15px;
+  padding-bottom:8px;
 }
 
 .weekdays div:first-child{
@@ -220,14 +239,14 @@ body{
 }
 
 .days div{
-  height:58px;
+  height:54px;
   display:flex;
   align-items:center;
   justify-content:center;
   border-radius:12px;
-  font-size:1.4rem;
-  background:rgba(255,255,255,.02);
-  border:1px solid rgba(255,255,255,.04);
+  background:rgba(255,255,255,.025);
+  border:1px solid rgba(255,255,255,.05);
+  font-size:22px;
   cursor:pointer;
 }
 
@@ -243,18 +262,17 @@ body{
 .months{
   display:grid;
   grid-template-columns:repeat(12,1fr);
-  gap:8px;
+  gap:7px;
   margin-top:18px;
 }
 
 .months button{
   padding:10px 0;
-  border:none;
   border-radius:14px;
-  background:rgba(0,0,0,.55);
+  border:1px solid rgba(255,200,90,.18);
+  background:rgba(0,0,0,.45);
   color:#f6d985;
   cursor:pointer;
-  border:1px solid rgba(255,200,90,.15);
 }
 
 .months button.active,
@@ -263,55 +281,37 @@ body{
 }
 
 .tasks{
-  height:145px;
+  height:150px;
+  border:1px solid rgba(228,178,83,.45);
+  border-radius:24px;
   background:rgba(0,0,0,.62);
-  border:1px solid rgba(212,167,74,.45);
-  border-radius:26px;
-  padding:22px;
+  padding:20px;
 }
 
-.tasks h4{
-  font-size:1.8rem;
-  font-family:'Playfair Display',serif;
+.tasks h3{
   color:#f3d07a;
+  font-family:Georgia,serif;
+  font-size:26px;
   margin-bottom:10px;
 }
 
 .tasks textarea{
   width:100%;
-  height:65px;
+  height:55px;
   background:transparent;
   border:none;
   outline:none;
   resize:none;
   color:white;
-  font-size:1rem;
+  font-size:16px;
 }
 
 .name{
-  text-align:center;
-  font-family:'Playfair Display',serif;
-  font-size:1.5rem;
   color:#f3d07a;
-  margin-top:8px;
-}
-
-@media(max-width:1300px){
-  .container{
-    grid-template-columns:320px 300px 1fr;
-  }
-
-  .top h2{
-    font-size:4.8rem;
-  }
-
-  .calendar-header h3{
-    font-size:2.3rem;
-  }
-
-  .days div{
-    height:48px;
-  }
+  font-family:Georgia,serif;
+  font-style:italic;
+  font-size:22px;
+  text-align:center;
 }
 </style>
 </head>
@@ -320,66 +320,61 @@ body{
 
 <div class="container">
 
-<aside class="sidebar">
-  <div class="logo">
-    <h1>Il Volo</h1>
-    <p>LIVE IN CONCERT</p>
-  </div>
+  <aside class="sidebar">
+    <div class="logo">Il Volo</div>
+    <div class="live">LIVE IN CONCERT</div>
 
-  <div class="clock">
-    <div class="center-dot"></div>
-    <div class="hand hour" id="hour"></div>
-    <div class="hand minute" id="minute"></div>
-    <div class="hand second" id="second"></div>
-  </div>
-
-  <div class="digital" id="digital"></div>
-  <div class="date" id="date"></div>
-
-  <div class="menu">
-    <button class="active">▣ Calendário</button>
-    <button>☰ Agenda</button>
-    <button>□ Notas</button>
-    <button>☑ Tarefas</button>
-  </div>
-</aside>
-
-<section class="photo-box">
-  <div class="photo-card">
-    <img src="fundo.jpg" alt="Foto">
-  </div>
-</section>
-
-<main class="main">
-
-  <div class="top">
-    <h2>2026</h2>
-    <p>FAITH • MUSIC • FRIENDSHIP</p>
-  </div>
-
-  <div class="calendar-box">
-    <div class="calendar-header">
-      <button onclick="prevMonth()">‹</button>
-      <h3 id="monthTitle">MAIO 2026</h3>
-      <button onclick="nextMonth()">›</button>
+    <div class="clock">
+      <div class="hand hour" id="hour"></div>
+      <div class="hand minute" id="minute"></div>
+      <div class="hand second" id="second"></div>
     </div>
 
-    <div class="weekdays">
-      <div>DOM</div><div>SEG</div><div>TER</div><div>QUA</div><div>QUI</div><div>SEX</div><div>SÁB</div>
+    <div class="digital" id="digital">00:00:00</div>
+    <div class="date" id="date">---</div>
+
+    <div class="menu">
+      <button class="active">▣ Calendário</button>
+      <button>☰ Agenda</button>
+      <button>□ Notas</button>
+      <button>☑ Tarefas</button>
+    </div>
+  </aside>
+
+  <section class="photo-box">
+    <div class="photo-card">
+      <img src="fundo.jpg" alt="Foto">
+    </div>
+  </section>
+
+  <main class="main">
+    <div class="top">
+      <h1>2026</h1>
+      <p>FAITH • MUSIC • FRIENDSHIP</p>
     </div>
 
-    <div class="days" id="days"></div>
+    <section class="calendar-box">
+      <div class="calendar-header">
+        <button onclick="prevMonth()">‹</button>
+        <h2 id="monthTitle">MAIO 2026</h2>
+        <button onclick="nextMonth()">›</button>
+      </div>
 
-    <div class="months" id="months"></div>
-  </div>
+      <div class="weekdays">
+        <div>DOM</div><div>SEG</div><div>TER</div><div>QUA</div><div>QUI</div><div>SEX</div><div>SÁB</div>
+      </div>
 
-  <div class="tasks">
-    <h4>TAREFAS</h4>
-    <textarea placeholder="Escreve aqui..."></textarea>
-    <div class="name">Ana Lúcia Lourenço ♡</div>
-  </div>
+      <div class="days" id="days"></div>
 
-</main>
+      <div class="months" id="months"></div>
+    </section>
+
+    <section class="tasks">
+      <h3>TAREFAS</h3>
+      <textarea placeholder="Escreve aqui..."></textarea>
+      <div class="name">Ana Lúcia Lourenço ♡</div>
+    </section>
+  </main>
 
 </div>
 
@@ -405,12 +400,11 @@ function renderCalendar(){
 
   const firstDay=new Date(year,currentMonth,1).getDay();
   const totalDays=new Date(year,currentMonth+1,0).getDate();
+  const today=new Date();
 
   for(let i=0;i<firstDay;i++){
     days.innerHTML+="<div></div>";
   }
-
-  const today=new Date();
 
   for(let d=1;d<=totalDays;d++){
     const isToday=today.getFullYear()===year && today.getMonth()===currentMonth && today.getDate()===d;
