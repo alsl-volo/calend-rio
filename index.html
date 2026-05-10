@@ -8,382 +8,311 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-width:100%;
-height:100vh;
-overflow:hidden;
-font-family:'Segoe UI',sans-serif;
-background:
-linear-gradient(rgba(0,0,0,0.82),rgba(0,0,0,0.88)),
-url('fundo.jpg') center center/cover no-repeat fixed;
-color:white;
-}
-
-body::before{
-content:"";
-position:absolute;
-inset:0;
-background:
-radial-gradient(circle at top,#7a000044,transparent 40%),
-radial-gradient(circle at bottom,#aa330022,transparent 35%);
-pointer-events:none;
+  width:100vw;
+  height:100vh;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 40% 35%, rgba(120,0,0,.35), transparent 38%),
+    linear-gradient(90deg,#050505,#090000 45%,#050505);
+  color:white;
+  font-family:"Segoe UI",sans-serif;
 }
 
 .container{
-position:relative;
-z-index:2;
-display:grid;
-grid-template-columns:380px 1fr;
-height:100vh;
-padding:20px;
-gap:25px;
+  width:100%;
+  height:100%;
+  display:grid;
+  grid-template-columns:390px 390px 1fr;
+  gap:25px;
+  padding:24px;
 }
 
-/* MENU */
-
+/* ESQUERDA */
 .sidebar{
-background:rgba(0,0,0,0.62);
-border:1px solid rgba(212,167,74,0.45);
-border-radius:32px;
-backdrop-filter:blur(12px);
-padding:30px;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-box-shadow:0 0 40px rgba(0,0,0,0.5);
-}
-
-.logo{
-text-align:center;
-margin-bottom:10px;
+  border:1px solid rgba(212,167,74,.45);
+  border-radius:32px;
+  background:rgba(0,0,0,.62);
+  padding:30px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
 .logo h1{
-font-family:'Playfair Display',serif;
-font-size:3rem;
-color:#f3d07a;
+  font-family:'Playfair Display',serif;
+  font-size:3rem;
+  color:#f3d07a;
 }
 
 .logo p{
-letter-spacing:5px;
-font-size:0.95rem;
-margin-top:5px;
-color:#f6e6b2;
-}
-
-/* RELÓGIO */
-
-.clock-box{
-display:flex;
-flex-direction:column;
-align-items:center;
-margin-top:10px;
+  text-align:center;
+  letter-spacing:5px;
+  font-size:.9rem;
+  color:#f6e6b2;
+  margin-top:5px;
 }
 
 .clock{
-width:210px;
-height:210px;
-border:2px solid rgba(212,167,74,0.5);
-border-radius:50%;
-position:relative;
-background:rgba(30,0,0,0.35);
-box-shadow:0 0 25px rgba(255,180,70,0.12);
+  width:210px;
+  height:210px;
+  border:2px solid rgba(212,167,74,.5);
+  border-radius:50%;
+  position:relative;
+  margin:35px 0 20px;
 }
 
 .center-dot{
-width:12px;
-height:12px;
-background:#f3d07a;
-border-radius:50%;
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-z-index:10;
+  width:12px;
+  height:12px;
+  background:#f3d07a;
+  border-radius:50%;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
 }
 
 .hand{
-position:absolute;
-bottom:50%;
-left:50%;
-transform-origin:bottom;
-transform:translateX(-50%) rotate(0deg);
-border-radius:10px;
+  position:absolute;
+  bottom:50%;
+  left:50%;
+  transform-origin:bottom;
+  transform:translateX(-50%) rotate(0deg);
+  border-radius:10px;
 }
 
-.hour{
-width:5px;
-height:55px;
-background:#ffe39b;
-}
-
-.minute{
-width:3px;
-height:78px;
-background:#ffd25e;
-}
-
-.second{
-width:2px;
-height:90px;
-background:#b56b00;
-}
-
-.number{
-position:absolute;
-width:100%;
-height:100%;
-font-size:1.1rem;
-color:#e5c46d;
-}
-
-.number span{
-position:absolute;
-left:50%;
-top:50%;
-transform-origin:center;
-}
+.hour{width:5px;height:55px;background:#ffe39b;}
+.minute{width:3px;height:78px;background:#ffd25e;}
+.second{width:2px;height:90px;background:#b56b00;}
 
 .digital{
-margin-top:22px;
-font-size:3rem;
-font-family:'Cinzel',serif;
-color:#f2c86f;
+  font-size:2.3rem;
+  font-family:'Cinzel',serif;
+  color:#f2c86f;
 }
 
 .date{
-margin-top:8px;
-font-size:1.2rem;
-color:#f1f1f1;
+  margin-top:8px;
+  font-size:1rem;
+  color:#eee;
 }
 
-/* BOTÕES */
-
 .menu{
-margin-top:35px;
-display:flex;
-flex-direction:column;
-gap:18px;
+  width:100%;
+  margin-top:35px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
 }
 
 .menu button{
-background:rgba(20,0,0,0.55);
-border:1px solid rgba(255,200,90,0.18);
-color:white;
-padding:20px;
-border-radius:22px;
-font-size:1.5rem;
-cursor:pointer;
-transition:0.3s;
-display:flex;
-align-items:center;
-gap:15px;
+  background:rgba(20,0,0,.55);
+  border:1px solid rgba(255,200,90,.18);
+  color:white;
+  padding:18px;
+  border-radius:20px;
+  font-size:1.2rem;
+  cursor:pointer;
 }
 
-.menu button:hover,
-.menu button.active{
-background:linear-gradient(90deg,#5a3300,#8d5b15);
-border-color:#f3d07a;
-transform:translateY(-2px);
+.menu button.active,
+.menu button:hover{
+  background:linear-gradient(90deg,#5a3300,#8d5b15);
+  border-color:#f3d07a;
 }
 
-.name{
-margin-top:30px;
-text-align:center;
-font-family:'Playfair Display',serif;
-font-size:2rem;
-line-height:1.2;
-color:#f3d07a;
+/* FOTO NO MEIO */
+.photo-box{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.photo-card{
+  width:100%;
+  max-width:370px;
+  border:1px solid rgba(212,167,74,.42);
+  border-radius:28px;
+  overflow:hidden;
+  background:rgba(0,0,0,.55);
+  box-shadow:0 0 35px rgba(0,0,0,.55);
+}
+
+.photo-card img{
+  width:100%;
+  display:block;
 }
 
 /* DIREITA */
-
 .main{
-display:flex;
-flex-direction:column;
-gap:20px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
 }
 
 .top{
-text-align:center;
-padding-top:5px;
+  text-align:center;
 }
 
 .top h2{
-font-size:7rem;
-font-family:'Playfair Display',serif;
-color:#f2c86f;
-line-height:1;
-text-shadow:0 0 20px rgba(255,190,70,0.18);
+  font-size:6rem;
+  font-family:'Playfair Display',serif;
+  color:#f2c86f;
+  line-height:1;
 }
 
 .top p{
-margin-top:10px;
-letter-spacing:8px;
-font-size:1.2rem;
-color:#f6d985;
+  letter-spacing:7px;
+  font-size:1rem;
+  color:#f6d985;
 }
 
-/* CALENDÁRIO */
-
 .calendar-box{
-flex:1;
-background:rgba(0,0,0,0.62);
-border:1px solid rgba(212,167,74,0.45);
-border-radius:35px;
-backdrop-filter:blur(12px);
-padding:35px;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
+  flex:1;
+  background:rgba(0,0,0,.62);
+  border:1px solid rgba(212,167,74,.45);
+  border-radius:32px;
+  padding:28px;
 }
 
 .calendar-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
 }
 
 .calendar-header button{
-width:58px;
-height:58px;
-border-radius:50%;
-border:1px solid rgba(212,167,74,0.5);
-background:rgba(0,0,0,0.55);
-color:#f2c86f;
-font-size:2rem;
-cursor:pointer;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  border:1px solid rgba(212,167,74,.5);
+  background:rgba(0,0,0,.55);
+  color:#f2c86f;
+  font-size:2rem;
+  cursor:pointer;
 }
 
 .calendar-header h3{
-font-size:4rem;
-font-family:'Cinzel',serif;
-color:#f6d985;
+  font-size:2.8rem;
+  font-family:'Cinzel',serif;
+  color:#f6d985;
 }
 
 .weekdays,
 .days{
-display:grid;
-grid-template-columns:repeat(7,1fr);
-gap:12px;
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:8px;
 }
 
 .weekdays div{
-text-align:center;
-font-size:1.4rem;
-padding-bottom:10px;
-color:#f2d07a;
+  text-align:center;
+  color:#f2d07a;
+  font-size:1rem;
+}
+
+.weekdays div:first-child{
+  color:#ff4a4a;
 }
 
 .days div{
-height:90px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:18px;
-font-size:2rem;
-background:rgba(255,255,255,0.02);
-border:1px solid rgba(255,255,255,0.04);
-transition:0.3s;
-cursor:pointer;
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  font-size:1.4rem;
+  background:rgba(255,255,255,.02);
+  border:1px solid rgba(255,255,255,.04);
+  cursor:pointer;
 }
 
 .days div:hover{
-background:rgba(255,180,70,0.18);
-transform:scale(1.04);
+  background:rgba(255,180,70,.18);
 }
 
 .today{
-background:linear-gradient(145deg,#a00000,#d14b32)!important;
-border:1px solid #ffb28a!important;
-box-shadow:0 0 20px rgba(255,80,50,0.3);
+  background:linear-gradient(145deg,#a00000,#d14b32)!important;
+  border:1px solid #ffb28a!important;
 }
 
-/* MESES */
-
 .months{
-display:grid;
-grid-template-columns:repeat(12,1fr);
-gap:10px;
-margin-top:25px;
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:8px;
+  margin-top:18px;
 }
 
 .months button{
-padding:14px 0;
-border:none;
-border-radius:18px;
-background:rgba(0,0,0,0.55);
-color:#f6d985;
-font-size:1rem;
-cursor:pointer;
-border:1px solid rgba(255,200,90,0.15);
-transition:0.3s;
+  padding:10px 0;
+  border:none;
+  border-radius:14px;
+  background:rgba(0,0,0,.55);
+  color:#f6d985;
+  cursor:pointer;
+  border:1px solid rgba(255,200,90,.15);
 }
 
-.months button:hover,
-.months button.active{
-background:#8d5b15;
-transform:translateY(-2px);
+.months button.active,
+.months button:hover{
+  background:#8d5b15;
 }
-
-/* TAREFAS */
 
 .tasks{
-height:170px;
-background:rgba(0,0,0,0.62);
-border:1px solid rgba(212,167,74,0.45);
-border-radius:28px;
-padding:25px;
-backdrop-filter:blur(12px);
+  height:145px;
+  background:rgba(0,0,0,.62);
+  border:1px solid rgba(212,167,74,.45);
+  border-radius:26px;
+  padding:22px;
 }
 
 .tasks h4{
-font-size:2.2rem;
-font-family:'Playfair Display',serif;
-color:#f3d07a;
-margin-bottom:15px;
+  font-size:1.8rem;
+  font-family:'Playfair Display',serif;
+  color:#f3d07a;
+  margin-bottom:10px;
 }
 
 .tasks textarea{
-width:100%;
-height:80px;
-background:transparent;
-border:none;
-outline:none;
-resize:none;
-color:white;
-font-size:1.2rem;
+  width:100%;
+  height:65px;
+  background:transparent;
+  border:none;
+  outline:none;
+  resize:none;
+  color:white;
+  font-size:1rem;
 }
 
-@media(max-width:1400px){
-
-.container{
-grid-template-columns:320px 1fr;
+.name{
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;
+  color:#f3d07a;
+  margin-top:8px;
 }
 
-.calendar-header h3{
-font-size:3rem;
-}
+@media(max-width:1300px){
+  .container{
+    grid-template-columns:320px 300px 1fr;
+  }
 
-.days div{
-height:70px;
-font-size:1.5rem;
-}
+  .top h2{
+    font-size:4.8rem;
+  }
 
-.top h2{
-font-size:5rem;
-}
+  .calendar-header h3{
+    font-size:2.3rem;
+  }
 
+  .days div{
+    height:48px;
+  }
 }
-
 </style>
 </head>
 
@@ -392,186 +321,144 @@ font-size:5rem;
 <div class="container">
 
 <aside class="sidebar">
+  <div class="logo">
+    <h1>Il Volo</h1>
+    <p>LIVE IN CONCERT</p>
+  </div>
 
-<div>
+  <div class="clock">
+    <div class="center-dot"></div>
+    <div class="hand hour" id="hour"></div>
+    <div class="hand minute" id="minute"></div>
+    <div class="hand second" id="second"></div>
+  </div>
 
-<div class="logo">
-<h1>Il Volo</h1>
-<p>LIVE IN CONCERT</p>
-</div>
+  <div class="digital" id="digital"></div>
+  <div class="date" id="date"></div>
 
-<div class="clock-box">
-
-<div class="clock">
-
-<div class="number"><span style="transform:translate(-50%,-50%) rotate(0deg) translateY(-92px);">12</span></div>
-
-<div class="center-dot"></div>
-
-<div class="hand hour" id="hour"></div>
-<div class="hand minute" id="minute"></div>
-<div class="hand second" id="second"></div>
-
-</div>
-
-<div class="digital" id="digital"></div>
-<div class="date" id="date"></div>
-
-</div>
-
-<div class="menu">
-
-<button class="active">▣ Calendário</button>
-<button>☰ Agenda</button>
-<button>□ Notas</button>
-<button>☑ Tarefas</button>
-
-</div>
-
-<div class="name">
-Ana Lúcia<br>Lourenço
-</div>
-
-</div>
-
+  <div class="menu">
+    <button class="active">▣ Calendário</button>
+    <button>☰ Agenda</button>
+    <button>□ Notas</button>
+    <button>☑ Tarefas</button>
+  </div>
 </aside>
+
+<section class="photo-box">
+  <div class="photo-card">
+    <img src="fundo.jpg" alt="Foto">
+  </div>
+</section>
 
 <main class="main">
 
-<div class="top">
-<h2>2026</h2>
-<p>FAITH • MUSIC • FRIENDSHIP</p>
-</div>
+  <div class="top">
+    <h2>2026</h2>
+    <p>FAITH • MUSIC • FRIENDSHIP</p>
+  </div>
 
-<div class="calendar-box">
+  <div class="calendar-box">
+    <div class="calendar-header">
+      <button onclick="prevMonth()">‹</button>
+      <h3 id="monthTitle">MAIO 2026</h3>
+      <button onclick="nextMonth()">›</button>
+    </div>
 
-<div class="calendar-header">
-<button>‹</button>
-<h3>MAIO 2026</h3>
-<button>›</button>
-</div>
+    <div class="weekdays">
+      <div>DOM</div><div>SEG</div><div>TER</div><div>QUA</div><div>QUI</div><div>SEX</div><div>SÁB</div>
+    </div>
 
-<div class="weekdays">
-<div>DOM</div>
-<div>SEG</div>
-<div>TER</div>
-<div>QUA</div>
-<div>QUI</div>
-<div>SEX</div>
-<div>SÁB</div>
-</div>
+    <div class="days" id="days"></div>
 
-<div class="days">
+    <div class="months" id="months"></div>
+  </div>
 
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div>1</div>
-<div>2</div>
-<div>3</div>
-
-<div>4</div>
-<div>5</div>
-<div>6</div>
-<div>7</div>
-<div>8</div>
-<div class="today">9</div>
-<div>10</div>
-
-<div>11</div>
-<div>12</div>
-<div>13</div>
-<div>14</div>
-<div>15</div>
-<div>16</div>
-<div>17</div>
-
-<div>18</div>
-<div>19</div>
-<div>20</div>
-<div>21</div>
-<div>22</div>
-<div>23</div>
-<div>24</div>
-
-<div>25</div>
-<div>26</div>
-<div>27</div>
-<div>28</div>
-<div>29</div>
-<div>30</div>
-<div>31</div>
-
-</div>
-
-<div class="months">
-
-<button>JAN</button>
-<button>FEV</button>
-<button>MAR</button>
-<button>ABR</button>
-<button class="active">MAI</button>
-<button>JUN</button>
-<button>JUL</button>
-<button>AGO</button>
-<button>SET</button>
-<button>OUT</button>
-<button>NOV</button>
-<button>DEZ</button>
-
-</div>
-
-</div>
-
-<div class="tasks">
-<h4>TAREFAS</h4>
-<textarea placeholder="Escreve aqui..."></textarea>
-</div>
+  <div class="tasks">
+    <h4>TAREFAS</h4>
+    <textarea placeholder="Escreve aqui..."></textarea>
+    <div class="name">Ana Lúcia Lourenço ♡</div>
+  </div>
 
 </main>
 
 </div>
 
 <script>
+const monthNames=[
+'JANEIRO','FEVEREIRO','MARÇO','ABRIL','MAIO','JUNHO',
+'JULHO','AGOSTO','SETEMBRO','OUTUBRO','NOVEMBRO','DEZEMBRO'
+];
 
-function updateClock(){
+const shortMonths=['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
 
-const now = new Date();
+let currentMonth=4;
+const year=2026;
 
-const hours = now.getHours();
-const minutes = now.getMinutes();
-const seconds = now.getSeconds();
+const days=document.getElementById("days");
+const monthTitle=document.getElementById("monthTitle");
+const months=document.getElementById("months");
 
-const hourDeg = (hours % 12) * 30 + minutes * 0.5;
-const minuteDeg = minutes * 6;
-const secondDeg = seconds * 6;
+function renderCalendar(){
+  days.innerHTML="";
+  months.innerHTML="";
+  monthTitle.textContent=monthNames[currentMonth]+" 2026";
 
-document.getElementById('hour').style.transform =
-`translateX(-50%) rotate(${hourDeg}deg)`;
+  const firstDay=new Date(year,currentMonth,1).getDay();
+  const totalDays=new Date(year,currentMonth+1,0).getDate();
 
-document.getElementById('minute').style.transform =
-`translateX(-50%) rotate(${minuteDeg}deg)`;
+  for(let i=0;i<firstDay;i++){
+    days.innerHTML+="<div></div>";
+  }
 
-document.getElementById('second').style.transform =
-`translateX(-50%) rotate(${secondDeg}deg)`;
+  const today=new Date();
 
-document.getElementById('digital').innerHTML =
-now.toLocaleTimeString('pt-PT');
+  for(let d=1;d<=totalDays;d++){
+    const isToday=today.getFullYear()===year && today.getMonth()===currentMonth && today.getDate()===d;
+    days.innerHTML+=`<div class="${isToday?'today':''}">${d}</div>`;
+  }
 
-document.getElementById('date').innerHTML =
-now.toLocaleDateString('pt-PT',{
-weekday:'long',
-day:'numeric',
-month:'long',
-year:'numeric'
-});
-
+  shortMonths.forEach((m,i)=>{
+    const btn=document.createElement("button");
+    btn.textContent=m;
+    if(i===currentMonth) btn.classList.add("active");
+    btn.onclick=()=>{currentMonth=i;renderCalendar();};
+    months.appendChild(btn);
+  });
 }
 
-setInterval(updateClock,1000);
-updateClock();
+function prevMonth(){
+  currentMonth=currentMonth===0?11:currentMonth-1;
+  renderCalendar();
+}
 
+function nextMonth(){
+  currentMonth=currentMonth===11?0:currentMonth+1;
+  renderCalendar();
+}
+
+function updateClock(){
+  const now=new Date();
+
+  const h=now.getHours();
+  const m=now.getMinutes();
+  const s=now.getSeconds();
+
+  document.getElementById("hour").style.transform=`translateX(-50%) rotate(${(h%12)*30+m*.5}deg)`;
+  document.getElementById("minute").style.transform=`translateX(-50%) rotate(${m*6}deg)`;
+  document.getElementById("second").style.transform=`translateX(-50%) rotate(${s*6}deg)`;
+
+  document.getElementById("digital").textContent=now.toLocaleTimeString("pt-PT");
+  document.getElementById("date").textContent=now.toLocaleDateString("pt-PT",{
+    weekday:"long",
+    day:"numeric",
+    month:"long",
+    year:"numeric"
+  });
+}
+
+renderCalendar();
+updateClock();
+setInterval(updateClock,1000);
 </script>
 
 </body>
